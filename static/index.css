@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-family: 'Dongle', sans-serif;
+    --main-color1: #02343F;
+    --main-color2: #F0EDCC;
+    --font-color: #000;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    cursor: pointer;
+    color: var(--font-color);
+}
+
+a:hover {
+    text-decoration:none;
+    cursor:pointer;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-color1);
+    /*height: 100vh;*/
+    -ms-overflow-style: none;
+    background: url("Dessert.jpg");
+    background-size: cover;
+}
+
+
+body::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*background-color: rgba(0, 0, 0, .7);*/
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.header-wrap {
+    width: 100vw;
+    height: 6vh;
+    background-color: var(--main-color2);
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dotted black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*background: #e8344e;*/
+}
+
+.header-title {
+    font-size: 24px;
+    /*font-weight: bold;*/
+    font-family: 'Jua', sans-serif;
+    color: var(--main-color1);
+    margin-left: 20px;
+
+}
+
+.title-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-page {
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    color: var(--main-color1);
+    /*border: 3px solid var(--main-color1);*/
+    border-radius: 18px;
+    background-color: var(--main-color2);
+}
+
+.random {
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    color: var(--main-color1);
+    background-color: var(--main-color2);
+    padding: 10px;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+
+.wrap {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-around;*/
+}
+
+.card {
+    width: 340px;
+    border: 5px solid black;
+    border-radius: 30px;
+    padding: 20px;
+    overflow: hidden;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 3px 3px 3px 3px #999;
+    background-color: rgb(224, 219, 205);
+}
+
+.dessert-img{
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #999;
+}
+
+.image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card-title {
+    font: bold 36px/1.2 'Dongle', sans-serif;
+    margin-top: 3px;
+    padding-top: 5px;
+}
+
+.like-box {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+a.level-item {
+    color: red;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.like-num {
+    color: indianred;
+    font-size: 30px;
+    font-family: 'Dongle', sans-serif;
+}
+
+.comment {
+    font: bold 24px/1.1 'Dongle', sans-serif;
+    padding: 10px 0 0;
+    margin: 10px 0 0;
+    border-top: 2px dashed black;
+    overflow: scroll;
+    width: 100%;
+    height: 3em;
+}
+/*랜덤추천받기 모달*/
+.modal-content {
+    width: 600px;
+    max-width: 80%;
+    font: bold 36px/1.2 'Jua', sans-serif;
+    font-color: #F6F5EE;
+}
+
+.random-question {
+    margin: 10px 0 10px;
+    /*background-color: #e8344e;*/
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.random-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px #999;
+}
+
+.random-title {
+    margin: 10px 0 10px;
+    padding-top: 10px;
+    /*background: #e8344e;*/
+}
+
+.field > p {
+    font-size: 36px;
+}
+
+.button .is-sparta is-outlined{
+    padding: 0 20px 0;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.media-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+    border-radius: 20px;
+}

@@ -63,15 +63,14 @@ function handleRandomOnClick() {
             <div class="box">
                 <article class="media">
                     <div class="media-content" id="media-content">
-                        <h1 class="random-question">이 디저트 어때요?</h1>
-                        <img src="${randomData[randomNum]["img"]}" alt="" className="random-img">
+                        <h1 class="random-question">오늘 이 디저트 어때요?</h1>
+                        <img src="${randomData[randomNum]["img"]}" alt="" class="random-img">
                         <div class="field">
-                            <h1 className="random-title">"${randomData[randomNum]["dessert_name"]}"</h1>
+                            <h1 class="random-title">"${randomData[randomNum]["dessert_name"]}"</h1>
                             <p>"${randomData[randomNum]["comment"]}"</p>
                         </div>
                         <nav class="level is-mobile">
                             <div class="level-left">
-
                             </div>
                             <div class="level-right">
                                 <div class="level-item">

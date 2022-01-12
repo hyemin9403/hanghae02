@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --font-family: 'Dongle', sans-serif;
+    --main-color1: #02343F;
+    --main-color2: #F0EDCC;
+    --font-color: #000;
 }
 
 body {
@@ -24,7 +31,7 @@ body::before {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .3);
 }
 
 .box {
@@ -35,9 +42,9 @@ body::before {
 }
 
 .box h1 {
-    color: deeppink;
     font-size: 32px;
     text-align: center;
+    font-family: none;
 }
 
 .mb-3 {
@@ -48,4 +55,18 @@ body::before {
     color: white;
 }
 
+.button.is-sparta {
+    background-color: var(--main-color1);
+    border-color: transparent;
+    color: #fff !important;
+}
 
+.button.is-sparta.is-outlined {
+    background-color: transparent;
+    border-color: var(--main-color2);
+    color: var(--main-color2) !important;
+}
+
+.help {
+    color: gray;
+}

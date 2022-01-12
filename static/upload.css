@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Jua&display=swap');
+
+* {
+    font-family: 'Jua', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-family: 'Dongle', sans-serif;
+    --main-color1: #02343F;
+    --main-color2: #F0EDCC;
+    --font-color: #000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100vh;
+}
+
+.all-background {
+    padding-top: 100px;
+    height: 100vh;
+    background: url("Dessert.jpg");
+    background-size: cover;
+}
+
+.wrap {
+    width: 600px;
+    margin: auto;
+}
+
+.all-background {
+    display: flex;
+}
+
+.jumbotron {
+    /*background-color: var(--main-color2);*/
+    background-color: rgb(224, 219, 205);
+    border-radius: 18px;
+    border: 5px solid black;
+    border-radius: 30px;
+    box-shadow: 3px 3px 3px 3px #999;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.posting-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 30px 20px;
+}
+
+.posting-box > .custom-file {
+    margin-bottom: 1rem;
+}
+
+.font-color {
+    color: #000;
+}
+
+.btn {
+    color: white;
+    background-color: var(--main-color1);
+}

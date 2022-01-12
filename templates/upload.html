@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- Webpage Title -->
+    <title>오늘 이 디저트 어때? | 업로드</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,9 +12,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="오늘 이 디저트 어때?"/>
     <meta property="og:description" content="오늘 뭐 디저트 뭐 드실지 고민되신다고요? 그래서 준비했습니다 '오늘 이 디저트 어때?' "/>
     <meta property="og:image" content="{{ url_for('static', filename='og.jpg') }}"/>
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon3.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='favicon3.png') }}" type="image/x-icon">
 
@@ -24,119 +31,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <title>오늘 이 디저트 어때? | 업로드</title>
-
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link href="{{ url_for('static', filename='upload.css') }}" rel="stylesheet">
 
-    <style>
-        * {
-            font-family: 'Jua', sans-serif;
-        }
-
-        .posting-box {
-            width: 500px;
-            margin-top: 20px;
-            padding-bottom: 20px;
-
-        }
-
-        .wrap {
-            width: 600px;
-            margin: auto;
-        }
-
-        .container {
-            padding-left: 50px;
-        }
-
-        .posting-box > .custom-file {
-            margin-bottom: 20px;
-        }
-
-        .save-date {
-            color: gray;
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-        .all-background {
-            padding-top: 100px;
-            height: 100vh;
-            background-image: url('/static/cupcakes.jpg');
-            background-repeat : no-repeat;
-            background-size: cover;
-
-        }
-        .font-color {
-            color: white;
-        }
-        .btn btn-primary {
-            color: white;
-        }
-
-
-    </style>
-    <script>
-        $(document).ready(function () {
-            bsCustomFileInput.init()
-        })
-
-        function posting() {
-            let dessert_name = $('#title').val()
-            let comment = $("#content").val()
-
-            let file = $('#file')[0].files[0]
-            let form_data = new FormData()
-
-            form_data.append("file_give", file)
-            form_data.append("dessert_name_give", dessert_name)
-            form_data.append("comment_give", comment)
-
-            $.ajax({
-                type: "POST",
-                url: "/upload/update",
-                data: form_data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    alert(response["msg"])
-                    window.location.replace("/")
-                }
-            });
-        }
-    </script>
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='upload.js') }}"></script>
+    
 </head>
 
 <body>
-<div class="all-background">
-    <div class="wrap">
-    <div class="jumbotron jumbotron-fluid" style="background-color: deeppink" >
-        <div class="container" >
-            <h1 class="font-color">오늘 이 디저트는 어때?</h1>
-            <div class="posting-box">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="file">
-                    <label class="custom-file-label" for="file" style="color: blueviolet">사진을 올려주세요</label>
+    <div class="all-background">
+        <div class="wrap">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="login title">오늘 이 디저트는 어때?</h1>
+                    <div class="posting-box">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="file">
+                            <label class="custom-file-label" for="file" style="color: blueviolet">사진을 올려주세요</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="title" placeholder="어떤 디저트를 드셨나요?">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="content" rows="3" placeholder="맛이 어떠셨어요?"></textarea>
+                        </div>
+                        <button onclick="posting()" type="button" class="btn">업로드</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="title" placeholder="어떤 디저트를 드셨나요?">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="content" rows="3" placeholder="맛이 어떠셨어요?"></textarea>
-                </div>
-                <button onclick="posting()" type="button" class="btn btn-primary">업로드</button>
             </div>
         </div>
-    </div>
-    <div class="card-columns" id="cards-box">
-    </div>
-</div>
 
-</div>
+    </div>
 
 </body>
 
