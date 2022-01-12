@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Webpage Title -->
-    <title>Log In | SWEETER</title>
+    <title>오늘 이 디저트 어때? | 로그인 페이지</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Stylish&display=swap" rel="stylesheet">
+    <meta property="og:title" content="오늘 이 디저트 어때?"/>
+    <meta property="og:description" content="오늘 뭐 디저트 뭐 드실지 고민되신다고요? 그래서 준비했습니다 '오늘 이 디저트 어때?'"/>
+    <meta property="og:image" content="{{ url_for('static', filename='og.jpg') }}"/>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon3.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='favicon3.png') }}" type="image/x-icon">
 
@@ -28,8 +31,7 @@
     <style>
         {#.has-text-centered {#}
         {#    display: none;#}
-        {
-        #}#}
+        {#{ #}
 
         .button.is-sparta {
             background-color: #e8344e;
@@ -151,6 +153,8 @@
 
         // 로그인화면 회원가입 버튼
         function toggle_sign_up() {
+            $("#input-username").val("")
+            $("#input-password").val("")
             $("#sign-up-box").toggleClass("is-hidden") // 회원가입시에만 보이는 요소
             $("#div-sign-in-or-up").toggleClass("is-hidden") // 로그인창에서 보이는 요소
             $("#help-id-login").toggleClass("is-hidden") // 로그인창에서 보이는 요소
@@ -256,7 +260,7 @@
             <article class="media">
                 <div class="media-content">
                     <div class="content">
-                        <h1 style="color:#fff">로그인</h1>
+                        <h1 style="color:deeppink">오늘 이 디저트 어때?</h1>
                         <div class="field has-addons">
                             <div class="control has-icons-left" style="width:100%">
                                 <input id="input-username" class="input" type="text" placeholder="아이디">
