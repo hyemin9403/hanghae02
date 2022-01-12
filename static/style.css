@@ -15,16 +15,32 @@ a {
     text-decoration: none;
 }
 
+body {
+    background-color: #F2E2C6;
+}
+
 .header-wrap {
     width: 100vw;
     height: 30vh;
-    background-color: #FAD6DC;
+    background-color: rgb(235, 225, 206);
     margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dotted black;
 }
 
 .header-title {
-    font: 36px/1.2 'Roboto', sans-serif;;
-    color: blue;
+    font: bold 72px/1.2 'Dongle', sans-serif;
+    color: #D5B88D;
+    margin-bottom: 20px;
+}
+
+.upload-page {
+    font: bold 36px/1.2 'Dongle', sans-serif;
+    font-color: #F6F5EE;
+    border: 3px solid black;
+    border-radius: 18px;
+    background-color: #FBDEA2;
+    padding: 5px;
 }
 
 .wrap {
@@ -37,23 +53,31 @@ a {
 
 .card {
     width: 340px;
-    border: 3px solid black;
+    border: 5px solid black;
     border-radius: 30px;
     padding: 20px;
     overflow: hidden;
     text-align: center;
     margin: 20px;
     box-shadow: 3px 3px 3px 3px #999;
+    background-color: rgb(224, 219, 205);
 }
 
 .dessert-img{
+    border: 3px solid black;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 3px #999;
 }
 
 .card-title {
-    font: 36px/1.2 'Dongle', sans-serif;
-    font-weight: bold;
+    font: bold 36px/1.2 'Dongle', sans-serif;
+    margin-top: 3px;
+}
+
+.like-box {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
 }
 
 a.level-item {
@@ -66,5 +90,12 @@ a.level-item {
 
 .like-num {
     color: indianred;
-    font: 26px/1.1 'Dongle', sans-serif;
+    font-size: 30px;
+    font-family: 'Dongle', sans-serif;
+}
+
+#comment {
+    font: bold 24px/1.1 'Dongle', sans-serif;
+    margin: 10px auto;
+    border-top: 2px dashed black;
 }
