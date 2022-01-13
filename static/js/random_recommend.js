@@ -67,14 +67,14 @@ function handleRandomOnClick() {
                         <img src="${randomData[randomNum]["img"]}" alt="" class="random-img">
                         <div class="field">
                             <h1 class="random-title">"${randomData[randomNum]["dessert_name"]}"</h1>
-                            <p>"${randomData[randomNum]["comment"]}"</p>
+                            <p>${randomData[randomNum]["comment"]}</p>
                         </div>
                         <nav class="level is-mobile">
                             <div class="level-left">
                             </div>
                             <div class="level-right">
                                 <div class="level-item">
-                                    <a class="button is-sparta is-outlined"
+                                    <a class="button is-sparta is-outlined close-btn"
                                        onclick='$("#modal-post").removeClass("is-active")'>닫기</a>
                                 </div>
                             </div>
@@ -93,11 +93,4 @@ function handleRandomOnClick() {
 
 function addClass() {
   $("#modal-post").addClass("is-active");
-}
-
-function anotherRandomDessert() {
-  const mediaContent = document.getElementById("media-content");
-  let randomNum = Math.floor(Math.random() * randomData.length);
-
-  mediaContent.innerHTML = "";
 }

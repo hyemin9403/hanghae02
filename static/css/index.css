@@ -111,7 +111,7 @@ body::before {
 }
 
 .card {
-    width: 340px;
+    width: 330px;
     border: 5px solid black;
     border-radius: 30px;
     padding: 20px;
@@ -169,19 +169,22 @@ a.level-item {
     width: 100%;
     height: 3em;
 }
-/*랜덤추천받기 모달*/
+/*랜덤추천 모달*/
 .modal-content {
     width: 600px;
     max-width: 80%;
-    font: bold 36px/1.2 'Jua', sans-serif;
-    font-color: #F6F5EE;
+}
+
+.box {
+    border-radius: 20px;
+    background-color: var(--main-color2);
 }
 
 .random-question {
     margin: 10px 0 10px;
-    /*background-color: #e8344e;*/
+    color: var(--main-color1);
     font-size: 36px;
-    font-weight: bold;
+    font-family: 'Jua', sans-serif;
 }
 
 .random-img {
@@ -196,15 +199,25 @@ a.level-item {
 .random-title {
     margin: 10px 0 10px;
     padding-top: 10px;
-    /*background: #e8344e;*/
+    color: var(--main-color1);
+    font-size: 36px;
+    font-family: 'Jua', sans-serif;
 }
 
 .field > p {
-    font-size: 36px;
+    color: var(--main-color1);
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
 }
 
 .button .is-sparta is-outlined{
     padding: 0 20px 0;
+}
+
+.close-btn {
+    /*border: 2px dotted ;*/
+    background-color: var(--main-color1);
+    color: var(--main-color2);
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -218,6 +231,3 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 
-.box {
-    border-radius: 20px;
-}
