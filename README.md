@@ -21,22 +21,22 @@ http://sogreek.shop/
 - Bulma 0.9.2
 `deploy`
 - AWS EC2 (Ubuntu 18.04 LTS)
-<br>
+<br><br>
 ## 3. 실행화면
 <img src="https://postfiles.pstatic.net/MjAyMjAxMTNfOSAg/MDAxNjQyMDUzODk0MzQ4.wbDv1nBvhgKIekGaOnbFtaCbppIoIj74sXEgx5SAbLcg.sAkV0lVDMTaYqQICnYqgxAJWM1r66cFwN6Ffvq8oW9Qg.PNG.gpalstksxk/SE-2f9bb851-090b-4428-adb7-ce61311bda93.png?type=w773">
-자세한 영상 : https://www.youtube.com/watch?v=-T-RK02JW9Q
+자세한 영상 : https://www.youtube.com/watch?v=-T-RK02JW9Q<br>
 <br>
-## 4. 요구 사항
-+ **SSR vs CSR **   
- :SSR은 한 번에 그려지는 장점, SEO에 강점
-CSR은 전체적인 시간은 SSR보다 비슷하거나 더 오래 걸릴 수도 있지만 로딩창을 먼저 보여줌으로써 사용자의 인내심을 늘려준다.
-+ **JWT **   
- :발급 후 토큰 검증만 하면 되기 때문에 추가 저장소가 필요 없다. 가볍다.
-필요한 모든 정보를 자체적으로 지니고 있기(self-contained)때문에 두 개체 사이에서 손쉽게 전달 될 수 있다.
+## 4. 요구 사항<br>
++ **SSR vs CSR **   <br>
+ :SSR은 한 번에 그려지는 장점, SEO에 강점<br>
+CSR은 전체적인 시간은 SSR보다 비슷하거나 더 오래 걸릴 수도 있지만 로딩창을 먼저 보여줌으로써 사용자의 인내심을 늘려준다.<br>
++ **JWT **   <br>
+ :발급 후 토큰 검증만 하면 되기 때문에 추가 저장소가 필요 없다. 가볍다.<br>
+필요한 모든 정보를 자체적으로 지니고 있기(self-contained)때문에 두 개체 사이에서 손쉽게 전달 될 수 있다.<br>
 
 <br>
-## 5. 개인 회고
-최규원 : https://cooked-developer.tistory.com/18   
-우혜민 : https://blog.naver.com/gpalstksxk/222620660475
-이가람 : https://velog.io/@devmag/미니프로젝트-코드-정리하기
-박현석 : https://luckseok.tistory.com/8
+## 5. 개인 회고<br>
+최규원 : https://cooked-developer.tistory.com/18   <br>
+우혜민 : https://blog.naver.com/gpalstksxk/222620660475<br>
+이가람 : https://velog.io/@devmag/미니프로젝트-코드-정리하기<br>
+박현석 : https://luckseok.tistory.com/8<br>
