@@ -61,7 +61,8 @@
 <container class="wrap">
     <!--  서버에서 보내준 디저트 리스트를 가지고 카드를 하나씩 생성해준다.  -->
     {% for dessert in dessert_list %}
-    <div class="card">
+    <!-- 카드의 내용을 전부 감싸는 div태크에 id를 문자열로 변환한 _id 부여하기. 게시글에 라벨링을 하기 위함이다. -->
+    <div id="{{ dessert._id }}" class="card">
         <div class="image is-5by4">
             <img class="dessert-img" src="/static/{{ dessert['img'] }}" }>
         </div>
@@ -69,15 +70,17 @@
         <div class="card-body">
             <h5 class="card-title">{{ dessert.dessert_name }}</h5>
             <div class="like-box">
+                <!-- 좋아요 아이콘을 a태그로 감싸고 onclick함수를 준다. 위에 있던 라벨링한 _id와 좋아요 타입(like, unlike)를 매개변수로 넘겨준다. -->
                 <a class="level-item is-sparta" aria-label="thumb"
-                   onclick="toggle_like(`{{ dessert.dessert_name }}`, 'like')">
+                   onclick="toggle_like('{{ dessert._id }}', 'like')">
                     <span class="icon is-small">
                         <i class="thumbs fas fa-thumbs-up" aria-hidden="true"></i>
                     </span>
                 </a>
-                <span class="like-num">{{ dessert.count_like }}</span>
+                <!-- 좋아요 숫자를 서버를 통해 받아오고서 후에 좋아요가 눌렸을 경우 toggle_like()함수의 ajax요청을 통해 갱신해준다. -->
+                <span id="like_count_num" class="like-num">{{ dessert.count_like }}</span>
                 <a class="level-item is-sparta" aria-label="thumb"
-                   onclick="toggle_like(`{{ dessert.dessert_name }}`, 'unlike')">
+                   onclick="toggle_like(`{{ dessert._id }}`, 'unlike')">
                     <span class="icon is-small">
                         <i class="thumbs fas fa-thumbs-down" aria-hidden="true"></i>
                     </span>

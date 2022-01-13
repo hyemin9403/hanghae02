@@ -3,6 +3,8 @@ import jwt
 import datetime
 import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
+from bson.objectid import ObjectId
+
 from werkzeug.utils import secure_filename
 
 # 날짜 시간을 다르는 함수 임포트하기
@@ -139,27 +141,34 @@ def update_like():
         # 받아온 토큰을 이용해서 유저 정보를 받아온다.
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"username": payload["id"]})
-        # 클라이언트가 보낸 요청에서 디저트 이름과 행동(좋아요, 싫어요) 종류를 받아온다.
-        dessert_name_receive = request.form["dessert_name_give"]
+        # 클라이언트가 보낸 요청에서 디저트의 _id 행동(like, unlike) 종류를 받아온다.
+        dessert_id_receive = request.form["dessert_id_give"]
         action_receive = request.form["action_give"]
 
-        # doc 딕셔너리에 유저와 디저트 이름, 행동을 저장한다.
+        # doc 딕셔너리에 유저와 디저트 _id, 행동을 저장한다.
         doc = {
-            "dessert_name": dessert_name_receive,
+            "dessert_id": dessert_id_receive,
             "username": user_info["username"],
             "action": action_receive
         }
 
-        # 행동이 좋아요면 likes 콜렉션에 해당하는 디저트와 유저이름, 행동을 저장하고 싫어요면 삭제한다
+        # 행동이 좋아요면 likes 콜렉션에 해당하는 디저트 _id와 유저이름, 행동을 저장하고 싫어요면 삭제한다
         # 행동이 좋아요면 dessert 콜렉션에서 해당하는 디저트의 좋아요 숫자를 +1, 싫어요면 -1
         if action_receive == "like":
             db.likes.insert_one(doc)
-            db.dessert.update_one({'dessert_name': dessert_name_receive}, {'$inc': {'count_like': 1}})
+            db.dessert.update_one({'_id': ObjectId(dessert_id_receive)}, {'$inc': {'count_like': 1}})
         else:
             db.likes.delete_one(doc)
-            db.dessert.update_one({'dessert_name': dessert_name_receive}, {'$inc': {'count_like': -1}})
+            db.dessert.update_one({'_id': ObjectId(dessert_id_receive)}, {'$inc': {'count_like': -1}})
 
-        return jsonify({"result": "success", 'msg': 'updated'})
+        # 클라이언트에게 보내줄 dessert_id를 서버에서 갖고온다.
+        # 해당하는 데이터를 받아올 때 ObjectId를 기준으로 갖고오는데, 파이썬에는 ObjectId 클래스가 내장되있지 않으므로 import 해줘야한다. (bson 패키지를 import해서 사용한다.)
+        dessert_id = list(db.dessert.find({'_id': ObjectId(dessert_id_receive)}, {'_id': 1, "count_like": 1}))[0]["_id"]
+        # 갖고 온 _id 값을 사용하기 위해서 형변환을 해준다.
+        dessert_id = str(dessert_id)
+        count = list(db.dessert.find({'_id': ObjectId(dessert_id_receive)}, {'_id': 1, "count_like": 1}))[0]["count_like"]
+
+        return jsonify({"result": "success", 'msg': 'updated', "dessert_id": dessert_id, "count": count})
 
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -176,8 +185,13 @@ def home():
     if token_receive is None:
         return redirect(url_for("login"))
 
+
     # 디저트 리스트를 화면에 뿌려준다.
-    dessert_list = list(db.dessert.find({}, {'_id': False}))
+    dessert_list = list(db.dessert.find({}))
+
+    # 이후에 _id 값을 가지고 라벨링을 하려면 그대로 쓰지 못하므로 형변환을 해준다.
+    for dessert_id in dessert_list:
+        dessert_id['_id'] = str(dessert_id['_id'])
     return render_template("index.html", dessert_list=dessert_list)
 
 
