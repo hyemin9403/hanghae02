@@ -19,7 +19,7 @@ body {
     justify-content: right;
     align-items: center;
     height: 100vh;
-    background: url("Dessert.jpg");
+    background: url("../Background_image.jpg");
     background-size: cover;
 }
 

@@ -34,38 +34,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
     <!-- CSS -->
-    <link href="{{ url_for('static', filename='upload.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/upload.css') }}" rel="stylesheet">
 
     <!-- JS -->
-    <script src="{{ url_for('static', filename='upload.js') }}"></script>
-    
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
 </head>
 
-<body>
-    <div class="all-background">
-        <div class="wrap">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="login title">오늘 이 디저트는 어때?</h1>
-                    <div class="posting-box">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="file">
-                            <label class="custom-file-label" for="file" style="color: blueviolet">사진을 올려주세요</label>
+    <body>
+        <div class="all-background">
+            <div class="wrap">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="login title">오늘 먹은 디저트는 어때?</h1>
+                        <div class="posting-box">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file">
+                                <label class="custom-file-label" for="file" style="color: blueviolet">사진을 올려주세요</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="title" placeholder="어떤 디저트를 드셨나요?">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="content" rows="3" placeholder="맛이 어떠셨어요?"></textarea>
+                            </div>
+                            <button onclick="posting()" type="button" class="btn">업로드</button>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="title" placeholder="어떤 디저트를 드셨나요?">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="content" rows="3" placeholder="맛이 어떠셨어요?"></textarea>
-                        </div>
-                        <button onclick="posting()" type="button" class="btn">업로드</button>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-
-</body>
-
+    </body>
 </html>

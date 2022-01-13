@@ -12,7 +12,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 SECRET_KEY = 'SPARTA'
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('13.209.88.221', 27017, username="test", password="test")
 db = client.dessert
 
 @app.route('/upload')

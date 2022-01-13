@@ -33,7 +33,7 @@ body {
     background-color: var(--main-color1);
     /*height: 100vh;*/
     -ms-overflow-style: none;
-    background: url("Dessert.jpg");
+    background: url("../Background_image.jpg");
     background-size: cover;
 }
 

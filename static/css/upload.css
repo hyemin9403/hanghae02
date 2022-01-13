@@ -22,7 +22,7 @@ body {
 .all-background {
     padding-top: 100px;
     height: 100vh;
-    background: url("Dessert.jpg");
+    background: url("../Background_image.jpg");
     background-size: cover;
 }
 
