@@ -1,3 +1,4 @@
+// 랜덤 추천에 쓰이는 디저트 이미지, 이름, 코멘트
 const randomData = [
   {
     img: "/static/random_data/icecream.jpg",
@@ -45,8 +46,11 @@ const randomData = [
     comment: "딸기 오믈렛은은 언제 먹어도 정말 맛있어요",
   },
 ];
+
+// DOM
 const randomItemContainer = document.getElementById("random-item-container");
 
+// Function
 function handleRandomOnClick() {
   //클릭하게 되면 랜덤으로 array에 있는 이미지와 설명을 골라서 추천을 해준다.
   let randomNum = Math.floor(Math.random() * randomData.length);

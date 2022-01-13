@@ -133,11 +133,13 @@ function toggle_sign_up() {
 }
 
 // ID, PW, EMAIL 정규표현식
+// 2자에서 10자 이내 최소 1개의 영문 입력.
 function is_nickname(asValue) {
     var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
     return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
 }
 
+// 8자에서 20자 이내 최소 1개의 영문, 숫자, 특수문자 입력.
 function is_password(asValue) {
     var regExp = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
     return regExp.test(asValue);
