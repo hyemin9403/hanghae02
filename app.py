@@ -159,8 +159,7 @@ def update_like():
             db.likes.delete_one(doc)
             db.dessert.update_one({'dessert_name': dessert_name_receive}, {'$inc': {'count_like': -1}})
 
-        count = db.dessert.count_documents({"dessert_name": dessert_name_receive})
-        return jsonify({"result": "success", 'msg': 'updated', "count": count})
+        return jsonify({"result": "success", 'msg': 'updated'})
 
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))

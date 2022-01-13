@@ -55,7 +55,9 @@
     </div>
 </header>
 
+<!-- jinja를 이용해서 디저트 정보를 화면에 뿌려준다. -->
 <container class="wrap">
+    <!--  서버에서 보내준 디저트 리스트를 가지고 카드를 하나씩 생성해준다.  -->
     {% for dessert in dessert_list %}
     <div class="card">
         <div class="image is-5by4">
