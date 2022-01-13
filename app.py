@@ -8,7 +8,6 @@ from werkzeug.utils import secure_filename
 # 날짜 시간을 다르는 함수 임포트하기
 from datetime import datetime, timedelta
 
-
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
@@ -17,13 +16,14 @@ SECRET_KEY = 'SPARTA'
 client = MongoClient('13.209.88.221', 27017, username="test", password="test")
 db = client.dessert
 
+
 @app.route('/upload')
 def show_upload_page():
     return render_template('upload.html')
 
+
 @app.route('/upload/update', methods=['POST'])
 def upload_dessert():
-
     # 서버 쪽 디저트이름, 코멘트 받기 코드
     dessert_name_receive = request.form['dessert_name_give']
     comment_receive = request.form['comment_give']
@@ -60,61 +60,75 @@ def upload_dessert():
 
     return jsonify({'msg': '저장 완료!'})
 
+
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+
 @app.route('/sign_up/check_id_dup', methods=['POST'])
-def check_id_dup():
-        username_receive = request.form['username_give']
-        exists = bool(db.users.find_one({"username": username_receive}))
-        return jsonify({'result': 'success', 'exists': exists})
+def check_id_dup(): # 아이디 체크
+    # username_receive로 클라이언트가 준 username 받기
+    username_receive = request.form['username_give']
+    # username이 db에 하나라도 있으면 exists 존재하는 user, 없으면은 bool함수로 바꾸면 false 존재하지않음
+    exists = bool(db.users.find_one({"username": username_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
+
 
 @app.route('/sign_up/check_email_dup', methods=['POST'])
-def check_email_dup():
+def check_email_dup(): # 이메일 체크
+    # useremail_receive로 클라이언트가 준 useremail 받기
     useremail_receive = request.form['useremail_give']
+    # useremail이 db에 하나라도 있으면 exists 존재하는 user, 없으면은 bool함수로 바꾸면 false 존재하지않음
     exists = bool(db.users.find_one({"useremail": useremail_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
+
 @app.route('/sign_up/save', methods=['POST'])
-def sign_up():
-    username_receive = request.form['username_give']
-    password_receive = request.form['password_give']
-    useremail_receive = request.form['email_give']
+def sign_up(): # 회원가입
+    username_receive = request.form['username_give'] # username_receive로 클라이언트가 준 username 받기
+    password_receive = request.form['password_give'] # password_receive로 클라이언트가 준 password 받기
+    useremail_receive = request.form['email_give'] # useremail_receive로 클라이언트가 준 useremail 받기
     # 패스워드 암호화
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
+    # db에 삽입할 user 만들기
     doc = {
-        "username": username_receive,                               # 아이디
-        "password": password_hash,                                  # 비밀번호
-        "useremail": useremail_receive                              # 이메일
+        "username": username_receive,  # 아이디
+        "password": password_hash,  # 비밀번호
+        "useremail": useremail_receive  # 이메일
 
     }
     db.users.insert_one(doc)
     return jsonify({'result': 'success'})
 
+
 @app.route('/sign_in', methods=['POST'])
-def sign_in():
-    # 로그인
-    username_receive = request.form['username_give']
-    password_receive = request.form['password_give']
+def sign_in(): # 로그인
+    username_receive = request.form['username_give'] # username_receive로 클라이언트가 준 username 받기
+    password_receive = request.form['password_give'] # password_receive로 클라이언트가 준 password 받기
     # print(username_receive, password_receive)
 
+    # password는 hash 함수로 암호화 진행
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     # 매칭되는 id와 pw값이 있는지 확인
+    # 매칭이 성공한다면 로그인 성공
     result = db.users.find_one({'username': username_receive, 'password': pw_hash})
     # 만약 result가 있다면
     if result is not None:
         payload = {
-         'id': username_receive,
-         'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
+            'id': username_receive,
+            'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
         }
         ## decode 방법이 jwt.decode(token, secret key, algorithms으로 바뀜)
+        # 로그인이 성공했다면 id와 jwt token 만들어서 발횅줍니다.
+        # SECRET_KEY 로 암호화
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
 
 @app.route('/update_like', methods=['POST'])
 def update_like():
@@ -152,6 +166,7 @@ def update_like():
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
 
 @app.route('/', methods=['GET'])
 def home():
