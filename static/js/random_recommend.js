@@ -17,7 +17,7 @@ const randomData = [
   },
   {
     img: "/static/random_data/rainbow_cake.jpg",
-    dessert_name: "아이스크림",
+    dessert_name: "레인보우 케이크",
     comment: "입안에서 팡팡! 터지는 레인보우 케이크입니다.",
   },
   {
