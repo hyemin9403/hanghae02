@@ -59,7 +59,7 @@ body {
     margin-top: 20px;
     padding: 0 30px 20px;
 }
-
+/*css 조정해주기. posting-box라는 클래스 안에 -> custom-file이라는 클래스를 지칭*/
 .posting-box > .custom-file {
     margin-bottom: 1rem;
 }

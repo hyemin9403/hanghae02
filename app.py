@@ -4,6 +4,8 @@ import datetime
 import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
+
+# 날짜 시간을 다르는 함수 임포트하기
 from datetime import datetime, timedelta
 
 
@@ -21,21 +23,31 @@ def show_upload_page():
 
 @app.route('/upload/update', methods=['POST'])
 def upload_dessert():
+
+    # 서버 쪽 디저트이름, 코멘트 받기 코드
     dessert_name_receive = request.form['dessert_name_give']
     comment_receive = request.form['comment_give']
 
+    # 서버 쪽 파일 받기 코드
     img = request.files["file_give"]
 
+    # 파일 이름 변경해주고 저장하기 (1) 일단, 확장자를 빼내기
     extension = img.filename.split('.')[-1]
 
+    # 지금 날짜 시간 찍기
     today = datetime.now()
+
+    # 날짜 시간을 원하는 형태로 변환하기
     mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
 
+    # 파일 이름 변경해주고 저장하기 (2) 새로운 이름을 만들어주기
     filename = f'img-{mytime}'
 
+    # 파일 이름 변경해주고 저장하기 (3) 새로운 이름으로 저장하기
     save_to = f'static/{filename}.{extension}'
     img.save(save_to)
 
+    # 파일 이름 변경해주고 저장하기 (4) 변경된 파일 이름을 db에도 저장하기
     doc = {
         'dessert_name': dessert_name_receive,
         'comment': comment_receive,
